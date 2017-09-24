@@ -1,0 +1,29 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Getry
+ * Date: 2017-09-24
+ * Time: 2:50 PM
+ */
+
+class Images extends CI_Model
+{
+    //constructor (a good practice)
+    function __construct()
+    {
+        parent::__construct();
+    }
+    function all()
+    {
+        $this->db->order_by("id", "desc");
+        $query = $this->db->get('images');
+        return $query->result_array();
+    }
+    function newest()
+    {
+        $this->db->order_by("id", "desc");
+        $this->db->limit(3);
+        $query = $this->db->get('images');
+        return $query->result_array();
+    }
+}
